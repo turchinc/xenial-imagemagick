@@ -12,7 +12,7 @@ RUN 	apt-get update && \
 RUN cd /tmp && wget http://www.imagemagick.org/download/ImageMagick.tar.gz 
 RUN cd /tmp && tar xzf ImageMagick.tar.gz 
 RUN cd /tmp/ImageMagick* && ./configure && make &&  make install && ldconfig /usr/local
-
+ADD policy.xml /etc/ImageMagic-6
 # Clean the cache created by package installations
 RUN 	apt-get autoclean && apt-get --purge -y autoremove && \
 		apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
